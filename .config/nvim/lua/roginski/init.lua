@@ -62,5 +62,6 @@ require("lazy").setup({
     {
         'numToStr/Comment.nvim',
         opts = {}
-    }
+    },
+    { 'hiphish/rainbow-delimiters.nvim' }
 })
