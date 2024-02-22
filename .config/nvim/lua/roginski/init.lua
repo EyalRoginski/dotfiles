@@ -1,5 +1,6 @@
 require("roginski.remap")
 require("roginski.set")
+require("roginski.autocmd")
 
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
     pattern = { "*" },

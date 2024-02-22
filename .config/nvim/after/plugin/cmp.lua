@@ -1,3 +1,4 @@
+local luasnip = require('luasnip')
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
@@ -10,6 +11,15 @@ cmp.setup {
             end
             if cmp.visible() then
                 cmp.confirm()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end,
+        ['<S-Tab>'] = function(fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
             else
                 fallback()
             end
