@@ -1,2 +1,21 @@
 alias python='python3'
 alias ipython='ipython3'
+
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+
+# Shlafman's git aliases.
+alias ga='git add'
+alias gs='git status'
+alias gd='git diff'
+alias gb='git branch'
+alias gcb='git branch --show-current'
+alias gr='git restore'
+alias gcm='git commit -m'
+alias gcam='git add . && git commit -m'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout main && git pull origin main'
+alias gpull='git pull origin $(gcb)'
+alias gpush='git push origin $(gcb)'
+alias gpushu='git push origin $(gcb) --set-upstream'

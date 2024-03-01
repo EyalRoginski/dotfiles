@@ -1,3 +1,9 @@
+-- Normal mode mappings
+vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
+
+-- Visual mode mappings
+vim.api.nvim_set_keymap('v', ';', ':', { noremap = true })
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>w", vim.cmd.up)
