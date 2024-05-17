@@ -29,15 +29,10 @@ fi
 if !(nvim --version); then
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage
-    ./nvim.appimage
+    ./nvim.appimage --appimage-extract
+    ./squashfs-root/usr/bin/nvim
 fi
 
 
-# Copy dotfiles
-cp ./.tmux.conf $HOME/.tmux.conf
-cp ./.zshrc $HOME/.zshrc
-cp ./.aliases $HOME/.aliases
-cp ./.p10k.zsh $HOME/.p10k.zsh
-
-mkdir -p $HOME/.config/ 2>/dev/null
-cp -R ./.config/nvim $HOME/.config/
+stow -t $HOME nvim
+stow -t $HOME shell

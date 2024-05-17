@@ -2,7 +2,14 @@ alias python='python3'
 alias ipython='ipython3'
 
 alias ta='tmux attach -t'
+alias tal='tmux attach' # as in attach last
 alias tls='tmux ls'
+alias tn='tmux new'
+alias tnc='tmux new -c'
+tncs()
+{
+    tmux new -c "$1" -s "$2"
+}
 
 # Shlafman's git aliases.
 alias ga='git add'
