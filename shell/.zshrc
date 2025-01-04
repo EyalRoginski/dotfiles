@@ -119,4 +119,26 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:/home/roginski/.local/bin"
 . "$HOME/.cargo/env"
 
+# Source Rye
+source "$HOME/.rye/env"
+
+# Nvim in $EDITOR
+export EDITOR="nvim"
+
 (sudo ntpdate ntp.ubuntu.com >/dev/null 2>&1 &)
+
+# bun completions
+[ -s "/home/roginski/.bun/_bun" ] && source "/home/roginski/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/roginski/.opam/opam-init/init.zsh' ]] || source '/home/roginski/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration

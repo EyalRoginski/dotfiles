@@ -27,3 +27,11 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
+
+-- Set tab width to 4
+vim.opt.tabstop = 4      -- Number of spaces that a <Tab> counts for
+vim.opt.shiftwidth = 4   -- Number of spaces to use for each step of (auto)indent
+vim.opt.expandtab = true -- Convert tabs to spaces
+
+-- Optional: Adjust softtabstop
+vim.opt.softtabstop = 4 -- Number of spaces a <Tab> counts for while editing
