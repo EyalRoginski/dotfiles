@@ -120,7 +120,7 @@ export PATH="$PATH:/home/roginski/.local/bin"
 . "$HOME/.cargo/env"
 
 # Source Rye
-source "$HOME/.rye/env"
+# source "$HOME/.rye/env"
 
 # Nvim in $EDITOR
 export EDITOR="nvim"
