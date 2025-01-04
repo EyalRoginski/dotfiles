@@ -1,5 +1,15 @@
 # You should set your terminal to a compatible font first - I use 0xProto Nerd Font
 
+apt update
+
+if !(gcc --version); then
+    apt install gcc
+fi
+
+if !(stow --version); then
+    apt install stow
+fi
+
 # Install zsh
 if !(zsh --version); then
     apt install zsh
@@ -27,10 +37,7 @@ fi
 
 # Install latest Neovim
 if !(nvim --version); then
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x nvim.appimage
-    ./nvim.appimage --appimage-extract
-    ./squashfs-root/usr/bin/nvim
+    snap install nvim --classic
 fi
 
 
