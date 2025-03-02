@@ -35,4 +35,14 @@ vim.keymap.set("n", "<leader>n", "<cmd>bnext<CR>zz")
 vim.keymap.set("n", "<leader>P", "<cmd>bprev<CR>zz")
 vim.keymap.set("n", "<leader>Y", "<cmd>PyrightSetPythonPath .venv/bin/python<CR>zz")
 
+-- Coqtail
+vim.keymap.set("n", "<M-j>", vim.cmd.CoqNext)
+vim.keymap.set("n", "<M-k>", vim.cmd.CoqUndo)
+vim.keymap.set("n", "<M-l>", vim.cmd.CoqToLine)
+vim.keymap.set("i", "<M-j>", vim.cmd.CoqNext)
+vim.keymap.set("i", "<M-k>", vim.cmd.CoqUndo)
+vim.keymap.set("i", "<M-l>", vim.cmd.CoqToLine)
+vim.keymap.set("n", "<leader>G", vim.cmd.CoqJumpToEnd)
+vim.g.coqtail_nomap = 1 -- Unset default Coqtail mappings
+
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
