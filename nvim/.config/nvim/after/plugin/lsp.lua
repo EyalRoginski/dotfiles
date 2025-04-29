@@ -12,7 +12,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = { 'ruff', 'rust_analyzer', 'clangd', 'lua_ls', 'jdtls' },
+    ensure_installed = { 'pyright', 'rust_analyzer', 'clangd', 'lua_ls', 'jdtls' },
     handlers = {
         lsp_zero.default_setup,
     },
@@ -21,7 +21,6 @@ require('mason-lspconfig').setup({
 require("lspconfig").ruff.setup({
     init_options = {
         settings = {
-            -- Modification to any of these settings has no effect.
             enable                = true,
             ignoreStandardLibrary = true,
             organizeImports       = true,
