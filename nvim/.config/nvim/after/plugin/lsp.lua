@@ -32,3 +32,7 @@ require("lspconfig").ruff.setup({
         },
     }
 })
+
+require("lspconfig").rust_analyzer.setup({
+    cmd = { "rust-analyzer" },
+})
