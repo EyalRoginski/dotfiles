@@ -34,7 +34,16 @@ require("lazy").setup({
     --         require 'nordic'.load()
     --     end
     -- },
-    { 'rebelot/kanagawa.nvim' },
+    {
+        'rebelot/kanagawa.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require 'kanagawa'.setup({
+                theme = "dragon"
+            })
+        end
+    },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
