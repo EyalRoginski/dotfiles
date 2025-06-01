@@ -42,6 +42,7 @@ require("lazy").setup({
             require 'kanagawa'.setup({
                 theme = "dragon"
             })
+            vim.cmd.colorscheme("kanagawa")
         end
     },
     {
@@ -74,6 +75,7 @@ require("lazy").setup({
         'numToStr/Comment.nvim',
         opts = {}
     },
-    { 'hiphish/rainbow-delimiters.nvim' },
+    -- { 'hiphish/rainbow-delimiters.nvim' },
     { 'whonore/Coqtail' }
 })
+
