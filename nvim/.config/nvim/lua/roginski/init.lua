@@ -26,14 +26,15 @@ require("lazy").setup({
         tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    {
-        'AlexvZyl/nordic.nvim',
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require 'nordic'.load()
-        end
-    },
+    -- {
+    --     'AlexvZyl/nordic.nvim',
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require 'nordic'.load()
+    --     end
+    -- },
+    { 'rebelot/kanagawa.nvim' },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
