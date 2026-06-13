@@ -1,2 +1,1 @@
 require("roginski")
-require("rye")

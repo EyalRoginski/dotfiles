@@ -26,14 +26,6 @@ require("lazy").setup({
         tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    -- {
-    --     'AlexvZyl/nordic.nvim',
-    --     lazy = false,
-    --     priority = 1000,
-    --     config = function()
-    --         require 'nordic'.load()
-    --     end
-    -- },
     {
         'rebelot/kanagawa.nvim',
         lazy = false,
@@ -42,26 +34,33 @@ require("lazy").setup({
             vim.cmd.colorscheme("kanagawa")
         end
     },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate'
-    },
-    'tpope/vim-fugitive',
-    'mbbill/undotree',
+    -- {
+    --     'nvim-treesitter/nvim-treesitter',
+    --     build = ':TSUpdate',
+    --     config = function()
+    --         require('nvim-treesitter.configs').setup({
+    --             ensure_installed = { "python", "rust", "javascript", "java", "html", "c", "lua", "vim", "vimdoc", "query" },
+    --             sync_install = false,
+    --             auto_install = true,
+    --             highlight = {
+    --                 enable = true,
+    --                 additional_vim_regex_highlighting = false,
+    --             },
+    --         })
+    --     end
+    -- },
     { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-    { 'neovim/nvim-lspconfig' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
-    { 'L3MON4D3/LuaSnip' },
-    { 'mfussenegger/nvim-dap' },
-    { 'mfussenegger/nvim-dap-python' },
-    { 'rcarriga/nvim-dap-ui' },
     { 'tpope/vim-surround' },
     {
-        'abecodes/tabout.nvim'
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
     },
+    { 'abecodes/tabout.nvim' },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -71,6 +70,4 @@ require("lazy").setup({
         'numToStr/Comment.nvim',
         opts = {}
     },
-    -- { 'hiphish/rainbow-delimiters.nvim' },
-    { 'whonore/Coqtail' }
 })
