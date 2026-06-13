@@ -55,7 +55,6 @@ require("lazy").setup({
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
     { 'L3MON4D3/LuaSnip' },
-    { 'jose-elias-alvarez/null-ls.nvim' },
     { 'mfussenegger/nvim-dap' },
     { 'mfussenegger/nvim-dap-python' },
     { 'rcarriga/nvim-dap-ui' },
@@ -75,4 +74,3 @@ require("lazy").setup({
     -- { 'hiphish/rainbow-delimiters.nvim' },
     { 'whonore/Coqtail' }
 })
-
