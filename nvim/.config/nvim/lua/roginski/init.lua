@@ -43,7 +43,6 @@ require("lazy").setup({
             })
         end
     },
-    { 'williamboman/mason.nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
     { 'tpope/vim-surround' },
@@ -64,4 +63,5 @@ require("lazy").setup({
         'numToStr/Comment.nvim',
         opts = {}
     },
+    { 'neovim/nvim-lspconfig' },
 })
