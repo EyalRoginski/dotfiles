@@ -28,4 +28,4 @@ alias gpush='git push origin $(gcb)'
 alias gpushu='git push origin $(gcb) --set-upstream'
 
 # sharkdp/bat
-alias cat=batcat
+alias cat=bat

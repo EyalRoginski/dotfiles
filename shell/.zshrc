@@ -125,8 +125,6 @@ export PATH="$PATH:/home/roginski/.local/bin"
 # Nvim in $EDITOR
 export EDITOR="nvim"
 
-(sudo ntpdate ntp.ubuntu.com >/dev/null 2>&1 &)
-
 # bun completions
 [ -s "/home/roginski/.bun/_bun" ] && source "/home/roginski/.bun/_bun"
 
