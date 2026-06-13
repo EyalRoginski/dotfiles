@@ -34,21 +34,15 @@ require("lazy").setup({
             vim.cmd.colorscheme("kanagawa")
         end
     },
-    -- {
-    --     'nvim-treesitter/nvim-treesitter',
-    --     build = ':TSUpdate',
-    --     config = function()
-    --         require('nvim-treesitter.configs').setup({
-    --             ensure_installed = { "python", "rust", "javascript", "java", "html", "c", "lua", "vim", "vimdoc", "query" },
-    --             sync_install = false,
-    --             auto_install = true,
-    --             highlight = {
-    --                 enable = true,
-    --                 additional_vim_regex_highlighting = false,
-    --             },
-    --         })
-    --     end
-    -- },
+    {
+        "romus204/tree-sitter-manager.nvim",
+        dependencies = {},
+        config = function()
+            require("tree-sitter-manager").setup({
+                ensure_installed = { "rust", "c", "cpp", "python", "gdscript", "markdown", "markdown_inline", "lua", "vimdoc", "toml" }
+            })
+        end
+    },
     { 'williamboman/mason.nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
