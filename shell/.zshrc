@@ -139,3 +139,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # opencode
 export PATH=/home/roginski/.opencode/bin:$PATH
+
+eval "$(atuin init zsh --disable-up-arrow)"
