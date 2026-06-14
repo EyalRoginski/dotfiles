@@ -45,7 +45,6 @@ require("lazy").setup({
     },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
-    { 'tpope/vim-surround' },
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
@@ -53,6 +52,7 @@ require("lazy").setup({
         -- install jsregexp (optional!).
         build = "make install_jsregexp"
     },
+    { 'tpope/vim-surround' },
     { 'abecodes/tabout.nvim' },
     {
         'windwp/nvim-autopairs',
