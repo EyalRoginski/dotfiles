@@ -7,6 +7,11 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
     command = "set guicursor=a:ver100"
 })
 
+local godot_pipe = "/tmp/godot.pipe"
+if vim.fn.filereadable(godot_pipe) == 0 then
+    vim.fn.serverstart(godot_pipe)
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
