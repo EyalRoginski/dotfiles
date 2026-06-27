@@ -6,6 +6,6 @@ vim.lsp.enable("ruff")
 if not is_portable then
     vim.lsp.enable("basedpyright")
     vim.lsp.enable("omnisharp")
+    vim.lsp.enable("bashls")
 end
 vim.lsp.enable("clangd")
-vim.lsp.enable("bashls")
