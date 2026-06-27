@@ -1,0 +1,39 @@
+name: Release Neovim Config
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create archive
+        run: |
+          tar -czf nvim-config.tar.gz -C nvim/.config nvim
+
+      - name: Update latest tag
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag -f latest
+          git push origin latest --force
+
+      - name: Create or update release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest
+          files: nvim-config.tar.gz
+          generate_release_notes: false
