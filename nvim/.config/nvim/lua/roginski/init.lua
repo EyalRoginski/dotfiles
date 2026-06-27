@@ -25,6 +25,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local is_portable = vim.env.NVIM_PORTABLE == "1"
+
 require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim',
@@ -69,4 +71,13 @@ require("lazy").setup({
         opts = {}
     },
     { 'neovim/nvim-lspconfig' },
+
+    checker = {
+        enabled = not is_portable,
+    },
+
+    change_detection = {
+        enabled = not is_portable,
+        notify = not is_portable,
+    },
 })
