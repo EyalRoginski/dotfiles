@@ -15,12 +15,8 @@ cmp.setup {
     }),
     mapping = {
         ['<Tab>'] = function(fallback)
-            -- Select the first one if none is selected.
-            if not cmp.get_selected_entry() then
-                cmp.select_next_item()
-            end
             if cmp.visible() then
-                cmp.confirm()
+                cmp.confirm({ select = true })
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             else
@@ -35,12 +31,8 @@ cmp.setup {
             end
         end,
         ['<CR>'] = function(fallback)
-            -- Select the first one if none is selected.
-            if not cmp.get_selected_entry() then
-                cmp.select_next_item()
-            end
             if cmp.visible() then
-                cmp.confirm()
+                cmp.confirm({ select = true })
                 vim.api.nvim_input("<CR>")
             else
                 fallback()
