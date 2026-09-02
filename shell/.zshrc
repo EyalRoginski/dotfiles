@@ -141,3 +141,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=/home/roginski/.opencode/bin:$PATH
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/roginski/.local/bin:$PATH"
