@@ -60,6 +60,7 @@ require("lazy").setup({
         build = "make install_jsregexp"
     },
     { 'tpope/vim-surround' },
+    { 'lewis6991/gitsigns.nvim' },
     { 'abecodes/tabout.nvim' },
     {
         'windwp/nvim-autopairs',
