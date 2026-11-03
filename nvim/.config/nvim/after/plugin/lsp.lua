@@ -9,3 +9,6 @@ if not is_portable then
     vim.lsp.enable("bashls")
 end
 vim.lsp.enable("clangd")
+if vim.fn.executable("nixd") == 1 then
+    vim.lsp.enable("nixd")
+end

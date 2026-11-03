@@ -46,7 +46,7 @@ require("lazy").setup({
         dependencies = {},
         config = function()
             require("tree-sitter-manager").setup({
-                ensure_installed = { "rust", "c", "cpp", "python", "gdscript", "markdown", "markdown_inline", "lua", "vimdoc", "toml", "bash", "awk", "c_sharp" }
+                ensure_installed = { "rust", "c", "cpp", "python", "gdscript", "markdown", "markdown_inline", "lua", "vimdoc", "toml", "bash", "awk", "c_sharp", "nix" }
             })
         end
     },

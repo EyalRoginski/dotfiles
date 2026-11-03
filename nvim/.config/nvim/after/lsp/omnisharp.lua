@@ -1,8 +1,14 @@
 local pid = vim.fn.getpid()
+-- The binary is called OmniSharp when installed through Nix
+local cmd = vim.fn.executable("OmniSharp") == 1 and "OmniSharp" or "omnisharp"
+local sdk_path = nil
+if vim.fn.executable("dotnet") == 1 then
+    sdk_path = vim.fn.fnamemodify(vim.fn.exepath("dotnet"), ":h")
+end
 
 return {
     cmd = {
-        "omnisharp",
+        cmd,
         "--languageserver",
         "--hostPID", tostring(pid),
     },
@@ -12,7 +18,7 @@ return {
         omnisharp = {
             enableRoslynAnalyzers = true,
             enableEditorConfigSupport = true,
-            sdkPath = vim.fn.trim(vim.fn.system("dirname $(which dotnet)")),
+            sdkPath = sdk_path,
         },
     },
 }

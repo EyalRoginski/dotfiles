@@ -79,6 +79,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+# On NixOS, ~/.oh-my-zsh is a read-only link into the Nix store.
+if [[ -e /etc/NIXOS ]]; then
+  export ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
+  export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+  zstyle ':omz:update' mode disabled
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -113,7 +120,7 @@ source $HOME/.aliases
 
 # Add stuff to path
 export PATH="$PATH:/home/roginski/.local/bin"
-. "$HOME/.cargo/env"
+[[ ! -f "$HOME/.cargo/env" ]] || . "$HOME/.cargo/env"
 
 # Source Rye
 # source "$HOME/.rye/env"
