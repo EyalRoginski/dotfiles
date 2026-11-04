@@ -5,7 +5,7 @@ My amazing config that everyone should use.
 
 ## System
 
-I run Ubuntu on WSL.
+I run NixOS or Fedora, depending on the machine.
 
 
 ## Shell
