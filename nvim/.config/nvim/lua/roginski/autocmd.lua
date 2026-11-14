@@ -1,26 +1,36 @@
-vim.api.nvim_create_autocmd({ "BufEnter", "WinClosed", "WinNew" }, {
-    pattern = "*",
-    callback = function()
-        vim.fn.system({ "tmux", "rename-window", vim.fn.expand("%:t") })
-    end
-})
-vim.api.nvim_create_autocmd({ "VimLeave" }, {
-    pattern = "*",
-    callback = function()
-        vim.fn.system({ "tmux", "rename-window", "zsh" })
-    end
-})
+-- Outside tmux, rename-window would target a window in some other session.
+if vim.env.TMUX then
+    vim.api.nvim_create_autocmd({ "BufEnter", "WinClosed", "WinNew" }, {
+        pattern = "*",
+        callback = function()
+            -- Directory buffers like oil://path/ have no tail, so use the directory's name
+            local name = vim.fn.expand("%:t")
+            if name == "" then
+                name = vim.fn.expand("%:h:t")
+            end
+            vim.fn.system({ "tmux", "rename-window", name })
+        end
+    })
+    vim.api.nvim_create_autocmd({ "VimLeave" }, {
+        pattern = "*",
+        callback = function()
+            vim.fn.system({ "tmux", "rename-window", "zsh" })
+        end
+    })
+end
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
-        local opts = { buffer = event.buf }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+        local function map(lhs, rhs, desc)
+            vim.keymap.set('n', lhs, rhs, { buffer = event.buf, desc = desc })
+        end
+        map('gd', vim.lsp.buf.definition, "Go to definition")
+        map('K', vim.lsp.buf.hover, "Hover")
+        map('gi', vim.lsp.buf.implementation, "Go to implementation")
+        map('gr', vim.lsp.buf.references, "References")
+        map('<F2>', vim.lsp.buf.rename, "Rename")
+        map('<F4>', vim.lsp.buf.code_action, "Code action")
+        map('gl', vim.diagnostic.open_float, "Line diagnostics")
     end,
 })
 
@@ -48,10 +58,15 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Format on save
+local format_group = vim.api.nvim_create_augroup('roginski_format_on_save', {})
 vim.api.nvim_create_autocmd('LspAttach', {
+    group = format_group,
     callback = function(event)
         local buf = event.buf  -- capture it here
+        -- LspAttach fires once per client, but each save should only format once.
+        vim.api.nvim_clear_autocmds({ group = format_group, event = 'BufWritePre', buffer = buf })
         vim.api.nvim_create_autocmd('BufWritePre', {
+            group = format_group,
             buffer = buf,
             callback = function()
                 local filetype = vim.bo[buf].filetype

@@ -18,7 +18,8 @@ I use [zsh](https://www.zsh.org/) and manage it with
 ## Terminal manager
 
 I use [tmux](https://github.com/tmux/tmux) with [tpm](https://github.com/tmux-plugins/tpm) as a
-plugin manager.
+plugin manager. The [tmux-sessionx](https://github.com/omerxx/tmux-sessionx) session picker needs
+[fzf](https://github.com/junegunn/fzf) and [bat](https://github.com/sharkdp/bat) to be installed.
 
 
 ## Editor

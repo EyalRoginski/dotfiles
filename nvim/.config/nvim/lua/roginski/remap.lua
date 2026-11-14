@@ -5,7 +5,7 @@ vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
 vim.api.nvim_set_keymap('v', ';', ':', { noremap = true })
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
 vim.keymap.set("n", "<leader>w", vim.cmd.up)
 vim.keymap.set("n", "<leader>W", function()
     vim.cmd("noa up")
@@ -32,6 +32,6 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>n", "<cmd>bnext<CR>zz")
 vim.keymap.set("n", "<leader>P", "<cmd>bprev<CR>zz")
-vim.keymap.set("n", "<leader>Y", "<cmd>PyrightSetPythonPath .venv/bin/python<CR>zz")
+vim.keymap.set("n", "<leader>Y", "<cmd>LspPyrightSetPythonPath .venv/bin/python<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

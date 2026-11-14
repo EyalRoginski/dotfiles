@@ -13,7 +13,7 @@ if vim.fn.filereadable(godot_pipe) == 0 then
 end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -30,7 +30,7 @@ local is_portable = vim.env.NVIM_PORTABLE == "1"
 require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
+        version = '*',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
@@ -67,12 +67,37 @@ require("lazy").setup({
         event = "InsertEnter",
         opts = {} -- this is equalent to setup({}) function
     },
-    {
-        'numToStr/Comment.nvim',
-        opts = {}
-    },
     { 'neovim/nvim-lspconfig' },
-
+    { 'folke/which-key.nvim' },
+    {
+        'stevearc/oil.nvim',
+        lazy = false,
+        opts = {
+            -- <C-s> is the tmux prefix, so it can't reach Neovim
+            keymaps = {
+                ["<C-s>"] = false,
+                ["<C-v>"] = { "actions.select", opts = { vertical = true } },
+            },
+            view_options = { show_hidden = true },
+        },
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            local context = require('treesitter-context')
+            context.setup({ max_lines = 4 })
+            vim.keymap.set('n', '<leader>uc', context.toggle, { desc = "Toggle code context" })
+        end,
+    },
+    {
+        'tamton-aquib/duck.nvim',
+        keys = {
+            { '<leader>qq', function() require('duck').hatch() end,    desc = "Hatch a duck" },
+            { '<leader>qk', function() require('duck').cook() end,     desc = "Cook a duck" },
+            { '<leader>qa', function() require('duck').cook_all() end, desc = "Cook all ducks" },
+        },
+    },
+}, {
     checker = {
         enabled = not is_portable,
     },

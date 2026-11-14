@@ -86,6 +86,13 @@ if [[ -e /etc/NIXOS ]]; then
   zstyle ':omz:update' mode disabled
 fi
 
+# Third-party plugins live outside this repo, so only load the ones installed on
+# this machine. zsh-syntax-highlighting has to stay last.
+for _plugin in zsh-autosuggestions zsh-syntax-highlighting; do
+  [[ -d "${ZSH_CUSTOM:-$ZSH/custom}/plugins/$_plugin" ]] && plugins+=("$_plugin")
+done
+unset _plugin
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
