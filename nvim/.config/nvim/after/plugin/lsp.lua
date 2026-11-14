@@ -12,3 +12,8 @@ vim.lsp.enable("clangd")
 if vim.fn.executable("nixd") == 1 then
     vim.lsp.enable("nixd")
 end
+-- Connects to the Godot editor's built-in server (port 6005), so the editor must be running
+vim.lsp.enable("gdscript")
+if vim.fn.executable("gdshader-lsp") == 1 then
+    vim.lsp.enable("gdshader_lsp")
+end
