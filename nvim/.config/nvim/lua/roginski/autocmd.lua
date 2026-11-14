@@ -31,6 +31,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('<F2>', vim.lsp.buf.rename, "Rename")
         map('<F4>', vim.lsp.buf.code_action, "Code action")
         map('gl', vim.diagnostic.open_float, "Line diagnostics")
+
+        -- `gq` goes through vim.lsp.formatexpr(), which gives up silently after 500ms.
+        -- clang-format lexes the whole file even for a range, so huge files need longer.
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client:supports_method('textDocument/rangeFormatting')
+            and vim.bo[event.buf].formatexpr == 'v:lua.vim.lsp.formatexpr()' then
+            vim.bo[event.buf].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:5000})'
+        end
     end,
 })
 
